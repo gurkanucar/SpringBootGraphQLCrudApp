@@ -1,0 +1,30 @@
+type Category{
+    id: ID
+    name: String
+}
+
+type CategoryDTO{
+    id: ID
+    name: String
+}
+
+input CategoryInput{
+    id: ID
+    name: String
+}
+
+input CategoryRequest{
+    id: ID
+    name: String
+}
+
+
+
+extend type Query{
+    getAllCategories : [CategoryDTO]
+}
+
+extend type Mutation {
+    createCategory(category: CategoryRequest): CategoryDTO
+}
+

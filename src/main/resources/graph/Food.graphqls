@@ -1,0 +1,26 @@
+type Food{
+    id: ID
+    name: String
+    recipe: String
+    categories: [Category]
+}
+
+
+input FoodRequest{
+    id: ID
+    name: String
+    recipe: String
+    categories: [CategoryInput]
+}
+
+type Query{
+    getAllFoods : [Food]
+    getFoodByID(id: ID!): Food
+}
+
+#
+type Mutation {
+    addFood(food: FoodRequest): Food
+    updateFood(food: FoodRequest): Food
+    deleteFood(id: ID!): Food
+}
