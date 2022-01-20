@@ -2,6 +2,8 @@ package com.example.graphqlexample.dto;
 
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 @Data
 @Builder
 @Getter
@@ -11,6 +13,7 @@ import lombok.*;
 public class CategoryDTO {
 
     private Long id;
+    @NotNull
     private String name;
 
 }
