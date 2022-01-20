@@ -13,7 +13,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "\r\nmutation {\r\n  addFood (\r\n      food: {\r\n          name:\"Yemek 2\"\r\n        recipe: \"tarifi 2\"\r\n        categories:[{id:2}]\r\n      }\r\n    \r\n    )\r\n    {\r\n    name id categories{\r\n        name id\r\n    }\r\n    }\r\n}",
+						"query": "\r\nmutation {\r\n  addFood (\r\n      food: {\r\n          name:\"Food 1\"\r\n        recipe: \"recipe 1\"\r\n        categories:[{id:1},{id:3}]\r\n      }\r\n    \r\n    )\r\n    {\r\n    name id categories{\r\n       id\r\n    }\r\n    }\r\n}",
 						"variables": ""
 					}
 				},
@@ -40,7 +40,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "\r\nmutation {\r\n  createCategory (\r\n    category :{\r\n        name: \"son kategori2\"\r\n     }\r\n    )\r\n    {\r\n    name id\r\n    }\r\n}",
+						"query": "\r\nmutation {\r\n  createCategory (\r\n    category :{\r\n        name: \"category 1\"\r\n     }\r\n    )\r\n    {\r\n    name id\r\n    }\r\n}",
 						"variables": ""
 					}
 				},
@@ -148,7 +148,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "\r\nmutation {\r\n  updateFood (\r\n      food: {\r\n          id:2,\r\n          name:\"Yemek 2 guncellenmis\"\r\n        recipe: \"tarifi 2 guncellenmis\"\r\n        categories:[{id:1},{id:3}]\r\n      }\r\n    \r\n    )\r\n    {\r\n    name id categories{\r\n        name id\r\n    }\r\n    }\r\n}",
+						"query": "\r\nmutation {\r\n  updateFood (\r\n      food: {\r\n          id:1,\r\n          name:\"Food 1 updated\"\r\n        recipe: \"recipe 1 updated\"\r\n        categories:[{id:1},{id:3}]\r\n      }\r\n    \r\n    )\r\n    {\r\n    name id categories{\r\n        name id\r\n    }\r\n    }\r\n}",
 						"variables": ""
 					}
 				},
