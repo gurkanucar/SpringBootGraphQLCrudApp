@@ -1,26 +1,16 @@
 package com.example.graphqlexample.exception;
 
-import graphql.ExceptionWhileDataFetching;
-import graphql.GraphQLError;
-import graphql.kickstart.execution.error.GraphQLErrorHandler;
+import graphql.GraphQLException;
+import graphql.kickstart.spring.error.ThrowableGraphQLError;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import java.util.List;
-import java.util.stream.Collectors;
+@Component
+public class GraphQLExceptionHandler  {
 
-public class GraphQLExceptionHandler implements GraphQLErrorHandler {
-
-    @Override
-    public List<GraphQLError> processErrors(List<GraphQLError> list) {
-        return list.stream().map(this::getNested).collect(Collectors.toList());
+    @ExceptionHandler(GraphQLException.class)
+    public ThrowableGraphQLError handle(GraphQLException e){
+        return new ThrowableGraphQLError(e);
     }
 
-    private GraphQLError getNested(GraphQLError error) {
-        if (error instanceof ExceptionWhileDataFetching) {
-            ExceptionWhileDataFetching exceptionError = (ExceptionWhileDataFetching) error;
-            if (exceptionError.getException() instanceof GraphQLError) {
-                return (GraphQLError) exceptionError.getException();
-            }
-        }
-        return error;
-    }
 }
