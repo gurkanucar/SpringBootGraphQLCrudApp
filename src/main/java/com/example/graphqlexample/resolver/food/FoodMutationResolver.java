@@ -6,8 +6,12 @@ import com.example.graphqlexample.model.Food;
 import com.example.graphqlexample.service.FoodService;
 import graphql.kickstart.tools.GraphQLMutationResolver;
 import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
+
+import javax.validation.Valid;
 
 @Component
+@Validated
 public class FoodMutationResolver implements GraphQLMutationResolver {
 
     private final FoodService foodService;
@@ -19,12 +23,12 @@ public class FoodMutationResolver implements GraphQLMutationResolver {
         this.converter = converter;
     }
 
-    public FoodDTO addFood(FoodDTO foodRequest) {
+    public FoodDTO addFood(@Valid FoodDTO foodRequest) {
         Food food = converter.dtoToFood(foodRequest);
         return converter.foodToDto(foodService.create(food));
     }
 
-    public FoodDTO updateFood(FoodDTO foodDTO) {
+    public FoodDTO updateFood(@Valid FoodDTO foodDTO) {
         Food food = converter.dtoToFood(foodDTO);
         return converter.foodToDto(foodService.update(food));
     }
