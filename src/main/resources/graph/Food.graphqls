@@ -14,7 +14,8 @@ input FoodRequest{
 }
 
 type Query{
-    getAllFoods : [Food]
+    #getAllFoods : [Food]
+    getAllFoods(code: String) : [Food]
     getFoodByID(id: ID!): Food
 }
 
