@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "684130d0-4a00-4c0d-a5cd-2bd348137c66",
+		"_postman_id": "95afcc09-6fbd-4918-8901-a1b3d00c5834",
 		"name": "GraphQLExample",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -94,7 +94,7 @@
 				"body": {
 					"mode": "graphql",
 					"graphql": {
-						"query": "\r\nquery {\r\n  getAllFoods{\r\n      name id recipe categories{\r\n          id name\r\n      }\r\n  }\r\n}",
+						"query": "\r\nquery {\r\n  getAllFoods(code:\"foods.stream().filter { s -> s.name.startsWith(\\\"K\\\") }.map { s -> s }.toList()\"){\r\n      name id recipe categories{\r\n          id name\r\n      }\r\n  }\r\n}",
 						"variables": ""
 					}
 				},
