@@ -10,12 +10,19 @@ import java.util.stream.Collectors;
 @Component
 public class FoodConverter {
 
-   public Food dtoToFood(FoodDTO foodDTO){
+    private final CategoryInsideFoodConverter categoryConverter;
+
+    public FoodConverter(CategoryInsideFoodConverter categoryConverter) {
+        this.categoryConverter = categoryConverter;
+    }
+
+
+    public Food dtoToFood(FoodDTO foodDTO){
         return Food.builder()
                 .id(foodDTO.getId())
                 .name(foodDTO.getName())
                 .recipe(foodDTO.getRecipe())
-                .categories(foodDTO.getCategories())
+                .categories(categoryConverter.dtoToCategory(foodDTO.getCategories()))
                 .build();
     }
 
@@ -24,7 +31,7 @@ public class FoodConverter {
                 .id(food.getId())
                 .name(food.getName())
                 .recipe(food.getRecipe())
-                .categories(food.getCategories())
+                .categories(categoryConverter.categoryToDto(food.getCategories()))
                 .build();
     }
 

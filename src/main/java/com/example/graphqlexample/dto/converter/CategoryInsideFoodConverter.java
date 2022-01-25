@@ -1,37 +1,36 @@
 package com.example.graphqlexample.dto.converter;
 
 import com.example.graphqlexample.dto.CategoryDTO;
-import com.example.graphqlexample.dto.FoodDTO;
+import com.example.graphqlexample.dto.CategoryInsideFoodDTO;
 import com.example.graphqlexample.model.Category;
-import com.example.graphqlexample.model.Food;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
-public class CategoryConverter {
+public class CategoryInsideFoodConverter {
 
-   public Category dtoToCategory(CategoryDTO categoryDTO) {
+   public Category dtoToCategory(CategoryInsideFoodDTO categoryDTO) {
         return Category.builder()
                 .id(categoryDTO.getId())
                 .name(categoryDTO.getName())
                 .build();
     }
 
-    public CategoryDTO categoryToDto(Category category) {
-        return CategoryDTO.builder()
+    public CategoryInsideFoodDTO categoryToDto(Category category) {
+        return CategoryInsideFoodDTO.builder()
                 .id(category.getId())
                 .name(category.getName())
                 .build();
     }
 
-    public List<CategoryDTO> categoryToDto(List<Category> categories){
+    public List<CategoryInsideFoodDTO> categoryToDto(List<Category> categories){
         return categories.stream()
                 .map(this::categoryToDto).collect(Collectors.toList());
     }
 
-    public List<Category> dtoToCategory(List<CategoryDTO> categories){
+    public List<Category> dtoToCategory(List<CategoryInsideFoodDTO> categories){
         return categories.stream()
                 .map(this::dtoToCategory).collect(Collectors.toList());
     }
